@@ -8,7 +8,7 @@
 		<version>2.6.6</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.danielcr.springboot.backend.apirest</groupId>
+	<groupId>com.tonyra.springboot.backend.apirest</groupId>
 	<artifactId>spring-boot-backend-apirest-1</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>PruebaTecnica</name>

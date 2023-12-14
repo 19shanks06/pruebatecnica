@@ -2,7 +2,7 @@ package com.tonyra.springboot.backend.apirest.auth;
 
 public class JwtConfig {
 
-	public static final String LLAVE_SECRETA ="creado.por.Daniel.CR";
+	public static final String LLAVE_SECRETA ="creado.por.tony.ra";
 	public static final String RSA_PRIVADA = "-----BEGIN RSA PRIVATE KEY-----\r\n" + 
 			"MIIEowIBAAKCAQEAwRRkppjNSOZkENkh8/JNk7vjVq1J7jRWT89ZrgOYbS7BkKDX\r\n" + 
 			"YYo3ylxi/Z7aQE5SYP1RIuz0Iw8ZuCsPr4Sh4nbkbWIPnthTB0ZWizmQCC2La81H\r\n" + 
