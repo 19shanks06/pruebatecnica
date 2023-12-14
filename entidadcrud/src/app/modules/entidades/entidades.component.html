@@ -1,0 +1,50 @@
+
+<div class="container card border-primary mb-3" >
+  <div class="card-header">Entidades</div>
+  <div class="card-body text-primary">
+    <h5 class="card-title">Listado de Entidades</h5>
+
+
+<div class="my-2 text-left">
+  <button *ngIf="authService.hasRole('ROLE_ADMIN')" class="btn btn-rounded btn-primary" type="button" [routerLink]="['/entidades/form']">Registrar Entidad</button>
+</div>
+
+
+<table class="table table-bordered table-striped">
+  <thead >
+    <tr >
+      <th>ID Entidad</th>
+        <th>Tipo de Documento</th>
+      <th>Nro.Documento</th>
+      <th>Razon Social</th>
+      <th>Nombre Comercial</th>
+      <th>Tipo de Contribuyente</th>
+      <th>Direccion</th>
+        <th>Telefono</th>
+        <th *ngIf="authService.hasRole('ROLE_ADMIN')">Editar</th>
+        <th *ngIf="authService.hasRole('ROLE_ADMIN')">Eliminar</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let entidad of entidades" >
+      <td>{{entidad.id_entidad}}</td>
+        <td>{{entidad.id_tipo_documento.nombre}}</td>
+      <td>{{entidad.nro_documento}}</td>
+      <td>{{entidad.razon_social}}</td>
+      <td>{{entidad.nombre_comercial}}</td>
+      <td>{{entidad.id_tipo_contribuyente.nombre}}</td>
+      <td>{{entidad.direccion}}</td>
+        <td>{{entidad.telefono}}</td>
+          <td *ngIf="authService.hasRole('ROLE_ADMIN')"  ><button  type="button" name="editar"  [routerLink]="['/entidades/form',entidad.id_entidad]" class="btn btn-primary btn-sm" >Editar</button></td>
+          <td *ngIf="authService.hasRole('ROLE_ADMIN')" ><button  type="button" name="eliminar"  (click)='delete(entidad)' class="btn btn-danger btn-sm" >Eliminar</button></td>
+
+
+    </tr>
+  </tbody>
+
+</table>
+
+
+
+</div>
+</div>

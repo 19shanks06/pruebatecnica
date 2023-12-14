@@ -1,0 +1,109 @@
+
+<ul class="alert alert-danger " *ngIf="errores?.length>0">
+  <li  *ngFor="let err of errores">{{err}}</li>
+</ul>
+
+
+  
+
+<div class="card bg-dark text-white">
+  <div class="card-header">
+    {{titulo}}
+  </div>
+  <div class="card-body">
+
+    <form #entidadForm="ngForm">
+
+
+
+
+      <div class="form-group row">
+        <label for="id_tipo_documento" class="col-form-label col-sm-2">Tipo Documento</label>
+        <div class="col-sm-6">
+          <select [compareWith]="compararDocumento" class="form-control"   [(ngModel)]="entidad.id_tipo_documento" name="id_tipo_documento" >
+      <option   [ngValue]="undefined">Seleccione su Documento</option>
+      <option  *ngFor="let documento of documentos" [ngValue]="documento">{{documento.nombre}}</option>
+         </select>
+        </div>
+      </div>
+
+
+
+      <div class="form-group row">
+        <label for="nro_documento" class="col-form-label col-sm-2">Nro de Documento</label>
+        <div class="col-sm-6">
+          <input class="form-control" type="text"   [(ngModel)]="entidad.nro_documento" name="nro_documento"  #nro_documento="ngModel">
+          <div class="alert alert-danger" *ngIf="nro_documento.invalid &&(nro_documento.dirty || nro_documento.touched)">
+          <div *ngIf="nro_documento.errors.required">
+                   El tipo de documento es requerido
+           </div>
+         </div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="razon_social" class="col-form-label col-sm-2">Razon Social</label>
+        <div class="col-sm-6">
+          <input class="form-control" type="text"   [(ngModel)]="entidad.razon_social" name="razon_social"   #razon_social="ngModel" >
+          <div class="alert alert-danger" *ngIf="razon_social.invalid &&(razon_social.dirty || razon_social.touched)">
+          <div *ngIf="razon_social.errors.required">
+                   El tipo de documento es requerido
+           </div>
+
+         </div>
+
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="nombre_comercial" class="col-form-label col-sm-2">Nombre Comercial</label>
+        <div class="col-sm-6">
+          <input class="form-control" type="text"   [(ngModel)]="entidad.nombre_comercial" name="nombre_comercial">
+        </div>
+      </div>
+
+
+
+      <div class="form-group row">
+        <label for="id_tipo_contribuyente" class="col-form-label col-sm-2">Tipo Contribuyente</label>
+        <div class="col-sm-6">
+          <select [compareWith]="compararContribuyente"  class="form-control" [(ngModel)]="entidad.id_tipo_contribuyente" name="id_tipo_contribuyente" >
+      <option   [ngValue]="undefined">Elija el tipo de Contribuyente</option>
+      <option  *ngFor="let contribuyente of contribuyentes" [ngValue]="contribuyente">{{contribuyente.nombre}}</option>
+         </select>
+        </div>
+      </div>
+
+
+      <div class="form-group row">
+        <label for="direccion" class="col-form-label col-sm-2">Direccion</label>
+        <div class="col-sm-6">
+          <input class="form-control" type="text"   [(ngModel)]="entidad.direccion" name="direccion">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="telefono" class="col-form-label col-sm-2">Telefono</label>
+        <div class="col-sm-6">
+          <input class="form-control" [(ngModel)]="entidad.telefono" name="telefono">
+        </div>
+      </div>
+
+
+<div class="form-group row">
+  <div class="col-sm-6">
+
+   <button [disabled]="!entidadForm.form.valid" class="btn btn-primary" role="button" (click)="create()" *ngIf="!entidad.id_entidad else elseBlock ">Registrar Entidad</button>
+
+     <ng-template #elseBlock>
+       <button [disabled]="!entidadForm.form.valid" class="btn btn-primary" role="button" (click)="update()">Editar</button>
+
+     </ng-template>
+
+  </div>
+</div>
+
+    </form>
+  </div>
+
+</div>
